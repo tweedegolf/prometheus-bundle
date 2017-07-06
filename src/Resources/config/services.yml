@@ -1,0 +1,3 @@
+services:
+    TweedeGolf\PrometheusClient\Storage\ApcuAdapter: ~
+    TweedeGolf\PrometheusClient\Storage\ApcAdapter: ~
