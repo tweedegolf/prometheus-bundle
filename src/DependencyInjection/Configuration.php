@@ -5,6 +5,7 @@ namespace TweedeGolf\PrometheusBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\Reference;
+use TweedeGolf\PrometheusClient\CollectorRegistry;
 use TweedeGolf\PrometheusClient\Storage\ApcuAdapter;
 
 /**
@@ -38,6 +39,7 @@ class Configuration implements ConfigurationInterface
                                     ->booleanNode('active')->defaultTrue()->end()
                                     ->arrayNode('labels')->prototype('scalar')->end()->end()
                                     ->scalarNode('help')->defaultNull()->end()
+                                    ->scalarNode('storage')->defaultValue(CollectorRegistry::DEFAULT_STORAGE)->end()
                                 ->end()
                             ->end()
                             ->arrayNode('gauge')
@@ -48,6 +50,7 @@ class Configuration implements ConfigurationInterface
                                     ->booleanNode('active')->defaultTrue()->end()
                                     ->arrayNode('labels')->prototype('scalar')->end()->end()
                                     ->scalarNode('help')->defaultNull()->end()
+                                    ->scalarNode('storage')->defaultValue(CollectorRegistry::DEFAULT_STORAGE)->end()
                                     ->variableNode('initializer')->defaultNull()->end()
                                 ->end()
                             ->end()
@@ -59,6 +62,7 @@ class Configuration implements ConfigurationInterface
                                     ->booleanNode('active')->defaultTrue()->end()
                                     ->arrayNode('labels')->prototype('scalar')->end()->end()
                                     ->scalarNode('help')->defaultNull()->end()
+                                    ->scalarNode('storage')->defaultValue(CollectorRegistry::DEFAULT_STORAGE)->end()
                                     ->arrayNode('buckets')->prototype('float')->end()->end()
                                 ->end()
                             ->end()

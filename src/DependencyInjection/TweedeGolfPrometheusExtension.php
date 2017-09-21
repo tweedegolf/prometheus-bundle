@@ -37,6 +37,7 @@ class TweedeGolfPrometheusExtension extends Extension
                     $name,
                     $collector['counter']['labels'],
                     $collector['counter']['help'],
+                    $collector['counter']['storage'],
                     true,
                 ]);
             } elseif (isset($collector['gauge']) && $collector['gauge']['active']) {
@@ -45,6 +46,7 @@ class TweedeGolfPrometheusExtension extends Extension
                     $collector['gauge']['labels'],
                     $collector['gauge']['initializer'],
                     $collector['gauge']['help'],
+                    $collector['gauge']['storage'],
                     true,
                 ]);
             } elseif (isset($collector['histogram']) && $collector['histogram']['active']) {
@@ -55,6 +57,7 @@ class TweedeGolfPrometheusExtension extends Extension
                     $collector['histogram']['labels'],
                     $buckets,
                     $collector['histogram']['help'],
+                    $collector['histogram']['storage'],
                     true,
                 ]);
             } else {
