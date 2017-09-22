@@ -15,7 +15,7 @@
     ],
     "require": {
         "php": ">=5.6.0",
-        "tweedegolf/prometheus-client": "^0.1",
+        "tweedegolf/prometheus-client": "^0.2",
         "symfony/config": "~2.7|~3.0",
         "symfony/dependency-injection": "~2.7|~3.0",
         "symfony/http-kernel": "~2.7|~3.0"
