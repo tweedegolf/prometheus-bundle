@@ -44,7 +44,7 @@ class TweedeGolfPrometheusExtension extends Extension
                 $registry->addMethodCall('createGauge', [
                     $name,
                     $collector['gauge']['labels'],
-                    $collector['gauge']['initializer'],
+                    $this->makeInitializer($collector['gauge']['initializer'], $container),
                     $collector['gauge']['help'],
                     $collector['gauge']['storage'],
                     true,
@@ -68,4 +68,34 @@ class TweedeGolfPrometheusExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
+
+    /**
+     * @param mixed $init
+     * @param ContainerBuilder $container
+     * @return callable|float
+     */
+     private function makeInitializer($init, ContainerBuilder $container)
+     {
+         if ($init !== null) {
+             if (is_float($init) || is_int($init)) {
+                 return $init;
+             } elseif (is_array($init) && count($init) === 2 && substr($init[0], 0, 1) === '@') {
+                 $ref = new Reference(substr($init[0], 1));
+                 return [$ref, $init[1]];
+             } elseif (is_string($init)) {
+                 $init = $container->getParameterBag()->resolveValue($init);
+                 if (is_numeric($init)) {
+                     return floatval($init);
+                 } elseif (is_callable($init, false)) {
+                     return $init;
+                 } else {
+                     throw new \RuntimeException("Cannot use string as default value");
+                 }
+             } else {
+                 throw new \RuntimeException("Unknown type for initializer");
+             }
+         }
+
+         return null;
+     }
 }
