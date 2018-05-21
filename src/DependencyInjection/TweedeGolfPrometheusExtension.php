@@ -27,7 +27,9 @@ class TweedeGolfPrometheusExtension extends Extension
 
         $container->setParameter('tweede_golf_prometheus.metrics_path', $config['metrics_path']);
         $registry = new Definition(CollectorRegistry::class, [
-            new Reference($config['storage_adapter_service'])
+            new Reference($config['storage_adapter_service']),
+            $config['make_memory_adapter'],
+            $config['register_defaults']
         ]);
         $container->setDefinition(CollectorRegistry::class, $registry);
 
