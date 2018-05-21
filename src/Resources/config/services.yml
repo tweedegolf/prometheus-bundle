@@ -1,3 +1,5 @@
 services:
-    TweedeGolf\PrometheusClient\Storage\ApcuAdapter: ~
-    TweedeGolf\PrometheusClient\Storage\ApcAdapter: ~
+    TweedeGolf\PrometheusClient\Storage\ApcuAdapter:
+      class: TweedeGolf\PrometheusClient\Storage\ApcuAdapter
+    TweedeGolf\PrometheusClient\Storage\ApcAdapter:
+      class: TweedeGolf\PrometheusClient\Storage\ApcAdapter
