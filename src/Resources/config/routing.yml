@@ -1,3 +1,3 @@
 tweede_golf_prometheus_metrics:
     path:     "%tweede_golf_prometheus.metrics_path%"
-    defaults: { _controller: TweedeGolfPrometheusBundle:Metrics:metrics }
+    defaults: { _controller: TweedeGolf\PrometheusBundle\Controller\MetricsController::metrics }
