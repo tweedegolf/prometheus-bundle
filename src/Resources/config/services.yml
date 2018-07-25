@@ -1,3 +1,10 @@
 services:
+    _defaults:
+        autowire: true
+
     TweedeGolf\PrometheusClient\Storage\ApcuAdapter: ~
     TweedeGolf\PrometheusClient\Storage\ApcAdapter: ~
+
+    TweedeGolf\PrometheusBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
