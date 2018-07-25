@@ -10,15 +10,27 @@ use TweedeGolf\PrometheusClient\Format\TextFormatter;
 class MetricsController extends Controller
 {
     /**
+     * @var CollectorRegistry
+     */
+    protected $registry;
+
+    /**
+     * MetricsController constructor.
+     *
+     * @param CollectorRegistry $registry
+     */
+    public function __construct(CollectorRegistry $registry)
+    {
+        $this->registry = $registry;
+    }
+
+    /**
      * @return Response
      */
-    public function metricsAction()
+    public function metrics()
     {
-        $registry = $this->get(CollectorRegistry::class);
         $formatter = new TextFormatter();
-        $registry->getCounter('planviewer_metrics_hits')->inc();
-
-        return new Response($formatter->format($registry->collect()), 200, [
+        return new Response($formatter->format($this->registry->collect()), 200, [
             'Content-Type' => $formatter->getMimeType(),
         ]);
     }
