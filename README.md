@@ -40,6 +40,8 @@ the default values are shown below:
 tweede_golf_prometheus:
     storage_adapter_service: TweedeGolf\PrometheusClient\Storage\ApcuAdapter
     metrics_path: /metrics
+    make_memory_adapter: true
+    register_defaults: true
     collectors: ~
 ```
 

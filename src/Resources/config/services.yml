@@ -1,10 +1,11 @@
 services:
-    _defaults:
-        autowire: true
+    TweedeGolf\PrometheusClient\Storage\ApcuAdapter:
+        class: TweedeGolf\PrometheusClient\Storage\ApcuAdapter
 
-    TweedeGolf\PrometheusClient\Storage\ApcuAdapter: ~
-    TweedeGolf\PrometheusClient\Storage\ApcAdapter: ~
+    TweedeGolf\PrometheusClient\Storage\ApcAdapter:
+        class: TweedeGolf\PrometheusClient\Storage\ApcAdapter
 
-    TweedeGolf\PrometheusBundle\Controller\:
-        resource: '../../Controller'
-        tags: ['controller.service_arguments']
+    TweedeGolf\PrometheusBundle\Controller\MetricsController:
+        class: Tweedegolf\PrometheusBundle\Controller\MetricsController
+        arguments:
+            - "@TweedeGolf\PrometheusClient\CollectorRegistry"

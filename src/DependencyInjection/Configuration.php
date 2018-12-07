@@ -26,6 +26,8 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('metrics_path')->defaultValue('/metrics')->end()
+                ->scalarNode('register_defaults')->defaultValue(true)->end()
+                ->scalarNode('make_memory_adapter')->defaultValue(true)->end()
                 ->scalarNode('storage_adapter_service')->defaultValue(new Reference(ApcuAdapter::class))->end()
                 ->arrayNode('collectors')
                     ->useAttributeAsKey('name')

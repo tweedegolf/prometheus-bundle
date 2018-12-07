@@ -27,7 +27,7 @@ class MetricsController extends Controller
     /**
      * @return Response
      */
-    public function metrics()
+    public function metricsAction()
     {
         $formatter = new TextFormatter();
         return new Response($formatter->format($this->registry->collect()), 200, [
