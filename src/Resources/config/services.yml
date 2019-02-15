@@ -8,4 +8,4 @@ services:
     TweedeGolf\PrometheusBundle\Controller\MetricsController:
         class: Tweedegolf\PrometheusBundle\Controller\MetricsController
         arguments:
-            - "@TweedeGolf\PrometheusClient\CollectorRegistry"
+            - '@TweedeGolf\PrometheusClient\CollectorRegistry'
