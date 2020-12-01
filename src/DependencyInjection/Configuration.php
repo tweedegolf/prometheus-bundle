@@ -20,10 +20,9 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('tweede_golf_prometheus');
+        $treeBuilder = new TreeBuilder('tweede_golf_prometheus');
 
-        $rootNode
+        $treeBuilder->getRootNode()
             ->children()
                 ->scalarNode('metrics_path')->defaultValue('/metrics')->end()
                 ->scalarNode('register_defaults')->defaultValue(true)->end()
