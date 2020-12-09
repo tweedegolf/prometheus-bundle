@@ -2,12 +2,12 @@
 
 namespace TweedeGolf\PrometheusBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use TweedeGolf\PrometheusClient\CollectorRegistry;
 use TweedeGolf\PrometheusClient\Format\TextFormatter;
 
-class MetricsController extends Controller
+class MetricsController extends AbstractController
 {
     /**
      * @var CollectorRegistry
